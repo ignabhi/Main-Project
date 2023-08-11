@@ -1,0 +1,110 @@
+{% extends 'coach/coach-index.html' %}
+
+{% block body %}
+
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Add Events</h5>
+                <p>Enter the details of <code><b>Events</b></code> and press the submit button.</p>
+                <!-- Custom Styled Validation -->
+                <form class="row g-3 needs-validation" novalidate method="post">
+                    {% csrf_token %}
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Event Title</label>
+                        <input type="text" name="event_name" class="form-control" id="validationCustom01" required placeholder="Enter event title">
+                        <div class="invalid-feedback">
+                            Please provide a valid input.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom02" class="form-label">Event Type</label>
+                        <select name="event_type" class="form-select" id="validationCustom02" required>
+                            <option selected disabled value="">Choose an option</option>
+                            <option value="Selection">Selection</option>
+                            <option value="Tournament">Tournament</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please enter a valid choice.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom02" class="form-label">Sport Type</label>
+                        <select name="sport_type" class="form-select" id="validationCustom02" required>
+                            <option selected disabled value="">Choose an option</option>
+                            <option value="Cricket">Cricket</option>
+                            <option value="Football">Football</option>
+                            <option value="Badminton">Badminton</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please enter a valid choice.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom03" class="form-label">Date</label>
+                        <input type="text" name="date" class="form-control" id="validationCustom03" required pattern="[A-Z a-z 0-9 ,./-]{10,100}" placeholder="Enter date (Month day, year)">
+                        <div class="invalid-feedback">
+                            Please enter a valid date.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom06" class="form-label">Time</label>
+                        <input type="text" name="time" class="form-control" id="validationCustom06" required pattern="[A-Z a-z 0-9 .:]{8,100}" placeholder="Enter time (HH:MM AM/PM)">
+                        <div class="invalid-feedback">
+                            Please provide a valid time.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom03" class="form-label">Location</label>
+                        <input type="text" name="location" class="form-control" id="validationCustom03" required placeholder="Enter location">
+                        <div class="invalid-feedback">
+                            Please provide a valid location.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom04" class="form-label">Coordinator</label>
+                        <select name="coordinator_id" class="form-select" id="validationCustom04" required>
+                            <option selected disabled value="">Choose an option</option>
+                            
+                            {% for i in  filter %}
+
+                            <option value="{{i.id}}">{{i.name}}</option>
+
+                            {% endfor %}
+                                
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid choice.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                    </div>
+                </form><!-- End Custom Styled Validation -->
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

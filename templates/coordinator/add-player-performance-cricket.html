@@ -1,0 +1,57 @@
+{% extends 'coordinator/coordinator-index.html' %}
+{% block body %}
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Individual Performance</h5>
+                <p>Enter the details and press the submit button.</p>
+                    <form class="row g-3 needs-validation" novalidate method="post">
+                        {% csrf_token %}
+                    <div class="col-md-6">
+                        <label for="validationCustom04" class="form-label">Player Name</label>
+                        <select name="name" class="form-select" id="validationCustom04" required>
+                            <option selected disabled value="">Choose an option</option>
+                            {% for i in  filter %}
+
+                            <option value="{{i.id}}">{{i.player_name}}</option>
+    
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a option.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Runs Scored</label>
+                        <input type="number" name="runs" class="form-control" id="validationCustom01" required placeholder="Enter runs scored">
+                        <div class="invalid-feedback">
+                            Please provide a valid input.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Wickets Taken</label>
+                        <input type="number" name="wickets" class="form-control" id="validationCustom01" required placeholder="Enter wickets taken">
+                        <div class="invalid-feedback">
+                            Please provide a valid input.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                    </div>
+                </form><!-- End Custom Styled Validation -->
+                </div>
+    </div>
+</div>
+
+{% endblock %}

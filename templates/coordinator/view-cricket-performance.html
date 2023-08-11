@@ -1,0 +1,44 @@
+{% extends 'coordinator/coordinator-index.html' %}
+{% block body %}
+
+<div class="col-12">
+    <div class="card recent-sales overflow-auto">
+    <div class="card-body">
+        <h5 class="card-title">Cricket</h5>
+        <table class="table table-hover datatable">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Player Name</th>
+            <th scope="col">Role</th>
+            {% comment %} <th scope="col">Matches Played</th>
+            <th scope="col">Runs</th>
+            <th scope="col">Wickets</th> {% endcomment %}
+            <th scope="col">More</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for i in data %}
+            <tr>
+            <th scope="row">#{{forloop.counter}}</a></th>
+            <td>{{i.player_name}}</td>
+            <td>{{i.role}}</td>
+            {% comment %} <td>{{i.matches_played}}</td>
+            <td>{{i.runs_scored}}</td>
+            <td>{{i.wickets_taken}}</td> {% endcomment %}
+            <td align="center">
+                <a href="{% url 'edit_cricket_performance_co' i.id%}"><button type="button" class="btn btn-primary">Edit</button><a/>
+                <a href="{% url 'view_player_performance_cricket' i.id%}"><button type="button" class="btn btn-primary">Performance</button><a/>
+            </td>
+            </tr> 
+            {% endfor %}
+            
+        </tbody>
+        </table>
+
+    </div>
+    </div>
+</div>
+
+{% endblock %}

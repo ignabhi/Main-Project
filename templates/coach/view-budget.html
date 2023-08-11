@@ -1,0 +1,41 @@
+{% extends 'coach/coach-index.html' %}
+{% block body %}
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                  <h5 class="card-title">Budget</h5>
+
+                  <table class="table table-hover datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Event Title</th>
+                        <th scope="col">Total Spending</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Location</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      {% for i in data %}
+                      <tr>
+                        <th scope="row"><a href="#">#{{forloop.counter}}</a></th>
+                        <td>{{i.event_name}}</td>
+                        <td>{{i.total_spending}}</td>
+                        <td>{{i.date}}</td>
+                        <td>{{i.location}}</td>
+                      </tr>
+                      {% endfor %}
+                        
+                      
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+
+{% endblock %}

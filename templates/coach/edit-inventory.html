@@ -1,0 +1,46 @@
+{% extends 'coach/coach-index.html' %}
+{% block body %}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Edit Inventory</h5>
+            <p>Enter the details of <code><b>Items</b></code> and press the submit button.</p>
+            <!-- Custom Styled Validation -->
+            <form class="row g-3 needs-validation" novalidate method="post">
+                {% csrf_token %}
+                <div class="col-md-6">
+                <label for="validationCustom01" class="form-label">Item Name</label>
+                <input type="text" name="item_name" class="form-control" id="validationCustom01" disabled value="{{update.item_name}}">
+                <div class="invalid-feedback">
+                    Please provide a valid input.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom04" class="form-label">Status</label>
+            <select name="status" class="form-select" id="validationCustom02" required>
+                <option selected disabled value="">Choose an option</option>
+                <option value="Good" {% if update.status == "Good" %} selected {% endif %}>Good</option>
+                <option value="Damaged" {% if update.status == "Damaged" %} selected {% endif %}>Damaged</option>
+                <option value="Broken" {% if update.status == "Broken" %} selected {% endif %}>Broken</option>
+            </select>
+                <div class="invalid-feedback">
+                    Please provide a valid input.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

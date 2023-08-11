@@ -1,0 +1,40 @@
+{% extends 'coordinator/coordinator-index.html' %}
+{% block body %}
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                  <h5 class="card-title">Football</h5>
+                  <table class="table table-hover datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Team Name</th>
+                        <th scope="col">Total Matches Played</th>
+                        <th scope="col">Coordinator</th>
+                        <th scope="col">More</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      {% for i in data %}
+                      <tr>
+                        <th scope="row"><a href="#">#{{forloop.counter}}</a></th>
+                        <td>{{i.team_name}}</td>
+                        <td>{{i.matches_played}}</td>
+                        <td>{{i.coordinator}}</td>
+                        <td align="center">
+                          <a href="{% url 'add_player_football_co' i.id %}"><button type="button" class="btn btn-primary">Add New Player</button></a>
+                          <a href="{% url 'view_football_players_co' i.id %}"><button type="button" class="btn btn-primary" >View Player</button></a>
+                          </td>
+                      </tr>
+                      {% endfor %}
+                        
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div><!-- End Recent Sales -->
+
+{% endblock %}

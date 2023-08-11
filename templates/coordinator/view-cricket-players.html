@@ -1,0 +1,39 @@
+{% extends 'coordinator/coordinator-index.html' %}
+{% block body %}
+
+<div class="col-12">
+    <div class="card recent-sales overflow-auto">
+    <div class="card-body">
+        <h5 class="card-title">Cricket</h5>
+        <table class="table table-hover datatable">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Player Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">Contact Info</th>
+            <th scope="col">Batting Style</th>
+            <th scope="col">Bowling Style</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for i in data %}
+            <tr>
+            <th scope="row">#{{forloop.counter}}</a></th>
+            <td>{{i.player_name}}</td>
+            <td>{{i.role}}</td>
+            <td>{{i.contact_info}}</td>
+            <td>{{i.batting_style}}</td>
+            <td>{{i.bowling_style}}</td>
+            </tr> 
+            {% endfor %}
+            
+        </tbody>
+        </table>
+
+    </div>
+    </div>
+</div>
+
+{% endblock %}

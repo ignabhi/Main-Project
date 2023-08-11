@@ -1,0 +1,109 @@
+{% extends 'coordinator/coordinator-index.html' %}
+{% block body %}
+
+            <div class="col-lg-12">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title">Performance</h5>
+                      <p>Enter the details of <code><b>{{update.player_name}}</b></code> and press the submit button.</p>
+                      <!-- Custom Styled Validation -->
+                      <form class="row g-3 needs-validation" novalidate method="post">
+                          {% csrf_token %}
+                        <div class="col-md-6">
+                            <label for="validationCustom04" class="form-label">Position</label>
+                            <select name="position" class="form-select" id="validationCustom04" required>
+                                <option selected disabled value="">Choose an option</option>      
+                                <option value="GK - Goalkeeper" {% if update.position == "GK - Goalkeeper" %} selected {% endif %}>GK - Goalkeeper</option>  
+                                <option value="CB - Center Back" {% if update.position == "CB - Center Back" %} selected {% endif %}>CB - Center Back</option>  
+                                <option value="LB - Left Back" {% if update.position == "LB - Left Back" %} selected {% endif %}>LB - Left Back</option>  
+                                <option value="RB - Right Back" {% if update.position == "RB - Right Back" %} selected {% endif %}>RB - Right Back</option>  
+                                <option value="LWB - Left Wing Back" {% if update.position == "LWB - Left Wing Back" %} selected {% endif %}>LWB - Left Wing Back</option>  
+                                <option value="RWB - Right Wing Back" {% if update.position == "RWB - Right Wing Back" %} selected {% endif %}>RWB - Right Wing Back</option>  
+                                <option value="CDM - Central Defensive Midfielder" {% if update.position == "CDM - Central Defensive Midfielder" %} selected {% endif %}>CDM - Central Defensive Midfielder</option>  
+                                <option value="CM - Center Midfielder" {% if update.position == "CM - Center Midfielder" %} selected {% endif %}>CM - Center Midfielder</option>  
+                                <option value="CAM - Center Attacking Midfielder" {% if update.position == "CAM - Center Attacking Midfielder" %} selected {% endif %}>CAM - Center Attacking Midfielder</option>  
+                                <option value="LM - Left Midfielder" {% if update.position == "LM - Left Midfielder" %} selected {% endif %}>LM - Left Midfielder</option>  
+                                <option value="RM - Right Midfielder" {% if update.position == "RM - Right Midfielder" %} selected {% endif %}>RM - Right Midfielder</option>  
+                                <option value="LW - Left Winger" {% if update.position == "LW - Left Winger" %} selected {% endif %}>LW - Left Winger</option>  
+                                <option value="RW - Right Winger" {% if update.position == "RW - Right Winger" %} selected {% endif %}>RW - Right Winger</option>  
+                                <option value="CF - Center Forward" {% if update.position == "CF - Center Forward" %} selected {% endif %}>CF - Center Forward</option>  
+                                <option value="ST - Striker" {% if update.position == "ST - Striker" %} selected {% endif %}>ST - Striker</option>  
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a valid option.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        {% comment %} <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Matches Played</label>
+                            <input type="number" name="matches" class="form-control" id="validationCustom01" required value="{{update.matches_played}}">
+                            <div class="invalid-feedback">
+                                Please provide a  valid name.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Goal Scored</label>
+                            <input type="number" name="goal" class="form-control" id="validationCustom01" required value="{{update.goals_scored}}">
+                            <div class="invalid-feedback">
+                                Please provide a  valid contact info.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="validationCustom01" class="form-label">Assists</label>
+                          <input type="number" name="assists" class="form-control" id="validationCustom01" required value="{{update.assists}}">
+                          <div class="invalid-feedback">
+                              Please provide a  valid contact info.
+                          </div>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                      </div>
+
+                      <div class="col-md-6">
+                          <label for="validationCustom01" class="form-label">Highest Goal Scored</label>
+                          <input type="number" name="highest_goal" class="form-control" id="validationCustom01" required value="{{update.highest_goal_score}}">
+                          <div class="invalid-feedback">
+                              Please provide a  valid contact info.
+                          </div>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <label for="validationCustom01" class="form-label">Yellow Cards</label>
+                          <input type="number" name="yellow" class="form-control" id="validationCustom01" required value="{{update.yellow_cards}}">
+                          <div class="invalid-feedback">
+                              Please provide a  valid contact info.
+                          </div>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <label for="validationCustom01" class="form-label">Red Cards</label>
+                          <input type="number" name="red" class="form-control" id="validationCustom01" required value="{{update.red_cards}}">
+                          <div class="invalid-feedback">
+                              Please provide a  valid contact info.
+                          </div>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                      </div> {% endcomment %}
+                          <div class="col-12">
+                              <button class="btn btn-primary" type="submit">Submit form</button>
+                          </div>
+                      </form><!-- End Custom Styled Validation -->
+      
+                  </div>
+              </div>
+          </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'athlete/athlete-index.html' %}
+
+{% block body %}
+
+<div class="col-12">
+    <div class="card recent-sales overflow-auto">
+    <div class="card-body">
+        <h5 class="card-title">Problems</h5>
+        <table class="table table-hover datatable">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Player Name</th>
+            <th scope="col">Details</th>
+            <th scope="col">Date</th>
+            <th scope="col">Contact info</th>
+            <th scope="col">Expected Return</th>
+            <th scope="col">More</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for i in data %}
+            <tr>
+            <th scope="row">#{{forloop.counter}}</a></th>
+            <td>{{i.name}}</td>
+            <td>{{i.problem_details}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.contact_info}}</td>
+            <td>{{i.recovery_status}}</td>
+            <td><a href="{% url 'edit_problem_at' i.id %}"><button type="button" class="btn btn-primary">Edit</button></a></td>
+            </tr> 
+            {% endfor %}
+            
+        </tbody>
+        </table>
+
+    </div>
+    </div>
+</div>
+
+{% endblock %}

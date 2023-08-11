@@ -1,0 +1,90 @@
+{% extends 'coach/coach-index.html' %}
+{% block body %}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Edit Events</h5>
+            <p>Enter the details of <code><b>Events</b></code> and press the submit button.</p>
+            <!-- Custom Styled Validation -->
+            <form class="row g-3 needs-validation" novalidate method="post">
+                {% csrf_token %}
+                <div class="col-md-6">
+                <label for="validationCustom01" class="form-label">Event Title</label>
+                <input type="text" name="name" class="form-control" id="validationCustom01" disabled value="{{update.event_name}}">
+                <div class="invalid-feedback">
+                    Please provide a valid input.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom04" class="form-label">Sport Type</label>
+            <input type="text" name="sport_type" class="form-control" id="validationCustom01" disabled value="{{update.sport_type}}">
+                <div class="invalid-feedback">
+                    Please provide a valid input.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">Date</label>
+                    <input type="text" name="date" class="form-control" id="validationCustom01" required value="{{update.date}}">
+                    <div class="invalid-feedback">
+                        Please provide a valid input.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-6">
+                <label for="validationCustom01" class="form-label">Time</label>
+                <input type="text" name="time" class="form-control" id="validationCustom01" required value="{{update.time}}">
+                <div class="invalid-feedback">
+                    Please provide a valid input.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom01" class="form-label">Location</label>
+                <input type="text" name="location" class="form-control" id="validationCustom01" required value="{{update.location}}">
+                <div class="invalid-feedback">
+                    Please provide a valid input.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-6">
+            <label for="validationCustom04" class="form-label">Coordinator</label>
+            <select name="coordinator_id" class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">Choose an option</option>
+            
+                {% for i in  filter %}
+
+                <option value="{{i.id}}" {% if update.coordinator_id == i.id %} selected {% endif %}>{{i.name}}</option>
+
+                {% endfor %}
+                
+            </select>
+            <div class="invalid-feedback">
+                Please select a valid input.
+            </div>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </form><!-- End Custom Styled Validation -->
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

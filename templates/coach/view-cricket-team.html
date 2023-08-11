@@ -1,0 +1,114 @@
+{% extends 'coach/coach-index.html' %}
+{% block body %}
+
+<div class="col-12">
+  <div class="card recent-sales overflow-auto">
+  <div class="card-body">
+    <h5 class="card-title">Click This Button to Add New Team.</h5>
+    <!-- Large Modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
+      Add New Team
+    </button>
+
+    <div class="modal fade" id="largeModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add New Team</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="col-lg-12">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title">Add New Team</h5>
+                      <p>Enter the details of <code><b>Team</b></code> and press the submit button.</p>
+                      <!-- Custom Styled Validation -->
+                      <form class="row g-3 needs-validation" novalidate method="post">
+                          {% csrf_token %}
+                          <div class="col-md-6">
+                              <label for="validationCustom01" class="form-label">Team name</label>
+                              <input type="text" name="team_name" class="form-control" id="validationCustom01" required placeholder="Enter team name">
+                              <div class="invalid-feedback">
+                                  Please provide a  valid name.
+                              </div>
+                              <div class="valid-feedback">
+                                  Looks good!
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                              <label for="validationCustom04" class="form-label">Coordinator</label>
+                              <select name="coordinator_id" class="form-select" id="validationCustom04" required>
+                                  <option selected disabled value="">Choose an option</option>
+                                  
+                                  {% for i in  filter %}
+      
+                                  <option value="{{i.id}}">{{i.name}}</option>
+      
+                                  {% endfor %}
+                                      
+                              </select>
+                              <div class="invalid-feedback">
+                                  Please select a option.
+                              </div>
+                              <div class="valid-feedback">
+                                  Looks good!
+                              </div>
+                          </div>
+                          <div class="col-12">
+                              <button class="btn btn-primary" type="submit">Submit form</button>
+                          </div>
+                      </form><!-- End Custom Styled Validation -->
+      
+                  </div>
+              </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Large Modal-->
+  </div>
+</div>
+</div>
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                  <h5 class="card-title">Cricket Teams</h5>
+                  <table class="table table-hover datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Team Name</th>
+                        <th scope="col">Matches Played</th>
+                        <th scope="col">Matches Won</th>
+                        <th scope="col">Matches Lost</th>
+                        <th scope="col">Coordinator</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      {% for i in data %}
+                      <tr>
+                        <th scope="row"><a href="#">#{{forloop.counter}}</a></th>
+                        <td>{{i.team_name}}</td>
+                        <td>{{i.matches_played}}</td>
+                        <td>{{i.matches_won}}</td>
+                        <td>{{i.matches_lost}}</td>
+                        <td>{{i.coordinator}}</td>
+                      </tr>
+                      {% endfor %}
+                        
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+
+{% endblock %}

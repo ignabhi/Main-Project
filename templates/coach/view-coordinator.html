@@ -1,0 +1,47 @@
+{% extends 'coach/coach-index.html' %}
+{% block body %}
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                  <h5 class="card-title">Coordinators</h5>
+
+                  <table class="table table-hover datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Coordinator Name</th>
+                        <th scope="col">Contact Info</th>
+                        <th scope="col">Sport Type</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">More</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in data %}
+                      <tr>
+                        <th scope="row">#{{forloop.counter}}</th>
+                        <td>{{i.name}}</td>
+                        <td>{{i.contact_info}}</td>
+                        <td>{{i.sport_type}}</td>
+                        {% if i.status == "Free" %}
+                        <td><span class="badge bg-success">{{i.status}}</span></td>
+                        {% else %}
+                        <td><span class="badge bg-warning">{{i.status}}</span></td>
+                        {% endif %}
+                        <td align="center">
+                          <a href="{% url 'edit_coordinator' i.id %}"><button type="button" class="btn btn-primary">Edit</button><a/>
+                          {% comment %} <a href="#"><button type="button" class="btn btn-danger">Delete</button></a> {% endcomment %}
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div>
+
+{% endblock %}

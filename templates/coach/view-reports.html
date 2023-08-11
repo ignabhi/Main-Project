@@ -1,0 +1,58 @@
+{% extends 'coach/coach-index.html' %}
+{% block body %}
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                  <h5 class="card-title">Reports</h5>
+
+                  <table class="table table-bordered ">
+                    <thead>
+                      <tr>
+                        <th scope="col">Total Coordinators</th>
+                        <th scope="col">Total Teams</th>
+                        <th scope="col">Total Events</th>
+                        <th scope="col">Match Histories</th>
+                        <th scope="col">Total Achievements</th>
+                        <th scope="col">Total Spending</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><b>Coordinators :</b> {{data6}} <br><br> Free : {{data7}} <br><br> Assigned : {{data8}}</td>
+                        <td><b>Cricket :</b> {{data}} <br><br> <b>Football :</b> {{data2}} <br><br> Total : {{data24}}</td>
+                        <td><b>Selections :</b> {{data3}} <br><br> <b>Tournaments :</b> {{data4}} <br><br> Total : {{data25}}</td>
+                        <td><b>Total Matches :</b> {{data21}} <br><br> Win : {{data18}} <br><br> Loss : {{data19}} <br><br> Draw : {{data20}}</td>
+                        <td><b>Achievements :</b> {{data5}}</td>
+                        <td><b>Total Amount :</b> {{data23.total_spending__sum}}</td>
+                      </tr>
+                    </tbody>
+
+                      <thead>
+                        <tr>
+                          <th scope="col">Total Athletes</th>
+                          <th scope="col">Total Problems</th>
+                          <th scope="col">Total Training Sessions</th>
+                          <th scope="col">Total Inventory Items</th>
+                          <th scope="col">Total Sponsors</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><b>Cricket :</b> {{data13}} <br><br> <b>Football : </b>{{data14}} <br><br> Total : {{data15}}</td>
+                          <td><b>Problems :</b> {{data16}} </td>
+                          <td><b>Training Sessions :</b> {{data22}} </td>
+                          <td><b>Items :</b> {{data9}} <br><br>  Good : {{data10}} <br><br> Damaged :  {{data11}} <br><br> Broken :  {{data12}}</td>
+                          <td><b>Sponsors :</b> {{data17}} </td>
+                        </tr>
+                      </tbody>
+
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+
+{% endblock %}

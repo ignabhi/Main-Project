@@ -1,0 +1,82 @@
+{% extends 'coordinator/coordinator-index.html' %}
+{% block body %}
+
+            <div class="col-lg-12">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title">Add New Player</h5>
+                      <p>Enter the details of <code><b>Player</b></code> and press the submit button.</p>
+                      <!-- Custom Styled Validation -->
+                      <form class="row g-3 needs-validation" novalidate method="post">
+                          {% csrf_token %}
+                          <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Player name</label>
+                            <input type="text" name="player_name" class="form-control" id="validationCustom01" required pattern="[A-Z a-z]{3,50}" placeholder="Enter name of player">
+                            <div class="invalid-feedback">
+                                Please provide a  valid name.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom04" class="form-label">Position</label>
+                            <select name="position" class="form-select" id="validationCustom04" required>
+                                <option selected disabled value="">Choose an option</option>      
+                                <option value="GK - Goalkeeper">GK - Goalkeeper</option>  
+                                <option value="CB - Center Back">CB - Center Back</option>  
+                                <option value="LB - Left Back">LB - Left Back</option>  
+                                <option value="RB - Right Back">RB - Right Back</option>  
+                                <option value="LWB - Left Wing Back">LWB - Left Wing Back</option>  
+                                <option value="RWB - Right Wing Back">RWB - Right Wing Back</option>  
+                                <option value="CDM - Central Defensive Midfielder">CDM - Central Defensive Midfielder</option>  
+                                <option value="CM - Center Midfielder">CM - Center Midfielder</option>  
+                                <option value="CAM - Center Attacking Midfielder">CAM - Center Attacking Midfielder</option>  
+                                <option value="LM - Left Midfielder">LM - Left Midfielder</option>  
+                                <option value="RM - Right Midfielder">RM - Right Midfielder</option>  
+                                <option value="LW - Left Winger">LW - Left Winger</option>  
+                                <option value="RW - Right Winger">RW - Right Winger</option>  
+                                <option value="CF - Center Forward">CF - Center Forward</option>  
+                                <option value="ST - Striker">ST - Striker</option>  
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a valid option.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="validationCustom01" class="form-label">Contact info</label>
+                          <input type="number" name="contact_info" class="form-control" id="validationCustom01" required pattern="[6789][0-9]{9}" placeholder="Enter phone number of player">
+                          <div class="invalid-feedback">
+                              Please provide a  valid contact info.
+                          </div>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="validationCustom04" class="form-label">Strong Foot</label>
+                        <select name="strong_foot" class="form-select" id="validationCustom04" required>
+                            <option selected disabled value="">Choose an option</option>      
+                            <option value="Left-Leg">Left-Leg</option>  
+                            <option value="Right-Leg">Right-Leg</option>    
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a option.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                          <div class="col-12">
+                              <button class="btn btn-primary" type="submit">Submit form</button>
+                          </div>
+                      </form><!-- End Custom Styled Validation -->
+      
+                  </div>
+              </div>
+          </div>
+
+{% endblock %}

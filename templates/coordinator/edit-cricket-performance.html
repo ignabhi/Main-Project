@@ -1,0 +1,88 @@
+{% extends 'coordinator/coordinator-index.html' %}
+{% block body %}
+
+
+            <div class="col-lg-12">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title">Performance</h5>
+                      <p>Enter the details of <code><b>{{update.player_name}}</b></code> and press the submit button.</p>
+                      <!-- Custom Styled Validation -->
+                      <form class="row g-3 needs-validation" novalidate method="post">
+                          {% csrf_token %}
+                          <div class="col-md-6">
+                              <label for="validationCustom04" class="form-label">Role</label>
+                              <select name="role" class="form-select" id="validationCustom04" required>
+                                  <option selected disabled value="">Choose an option</option>      
+                                  <option value="Batsman" {% if update.role == "Batsman" %} selected {% endif %}>Batsman</option>  
+                                  <option value="Bowlers " {% if update.role == "Bowlers" %} selected {% endif %}>Bowlers</option>  
+                                  <option value="Wicket-keeper" {% if update.role == "Wicket-Keeper" %} selected {% endif %}>Wicket-Keeper</option>  
+                                  <option value="All-rounder" {% if update.role == "All-Rounder" %} selected {% endif %}>All-Rounder</option>  
+                              </select>
+                              <div class="invalid-feedback">
+                                  Please select a option.
+                              </div>
+                              <div class="valid-feedback">
+                                  Looks good!
+                              </div>
+                          </div>
+                    {% comment %} <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Matches Played</label>
+                        <input type="number" name="matches" class="form-control" id="validationCustom01" required value="{{update.matches_played}}">
+                        <div class="invalid-feedback">
+                            Please provide a  valid name.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Runs Scored</label>
+                        <input type="number" name="runs" class="form-control" id="validationCustom01" required value="{{update.runs_scored}}">
+                        <div class="invalid-feedback">
+                            Please provide a valid input.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Wickets Taken</label>
+                        <input type="number" name="wickets" class="form-control" id="validationCustom01" required value="{{update.wickets_taken}}">
+                        <div class="invalid-feedback">
+                            Please provide a valid input.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Highest Runs Scored</label>
+                        <input type="number" name="highest_runs" class="form-control" id="validationCustom01" required value="{{update.highest_score}}">
+                        <div class="invalid-feedback">
+                            Please provide a valid input.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Highest Wicket Taken</label>
+                        <input type="number" name="highest_wicket" class="form-control" id="validationCustom01" required value="{{update.highest_wicket}}">
+                        <div class="invalid-feedback">
+                            Please provide a valid input.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div> {% endcomment %}
+                          <div class="col-12">
+                              <button class="btn btn-primary" type="submit">Submit form</button>
+                          </div>
+                      </form><!-- End Custom Styled Validation -->
+      
+                  </div>
+              </div>
+          </div>
+
+{% endblock %}

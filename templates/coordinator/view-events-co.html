@@ -1,0 +1,42 @@
+{% extends 'coordinator/coordinator-index.html' %}
+{% block body %}
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                <h5 class="card-title">Events List</h5>
+                <table class="table table-hover datatable">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Event Title</th>
+                        <th scope="col">Sport Type</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Coordinator</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                    {% for i in data %}
+                    <tr>
+                        <th scope="row">#{{forloop.counter}}</a></th>
+                        <td>{{i.event_name}}</td>
+                        <td>{{i.sport_type}}</td>
+                        <td>{{i.date}}</td>
+                        <td>{{i.time}}</td>
+                        <td>{{i.location}}</td>
+                        <td>{{i.coordinator}}</td>
+                    </tr> 
+                    {% endfor %}
+ 
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            </div><!-- End Recent Sales -->
+
+
+{% endblock %}

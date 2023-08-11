@@ -1,0 +1,142 @@
+{% extends 'coordinator/coordinator-index.html' %}
+{% block body %}
+{% load static %}
+
+<div class="col-12">
+    <div class="card recent-sales overflow-auto">
+    <div class="card-body">
+        <h5 class="card-title">Overall <span>| {{name}}</span> </h5>
+        <h6>
+            <table class="table table-boderless" style="width:50%;">
+                <tr>
+                    <th><p><b>Total Matches Played </b></p></th>
+                    <td>{{total_matches}}</td>
+                    <th><p><b>Total Goals Scored </b></p></th>
+                    <td>{{goals}}</td>
+                </tr>
+                <tr>
+                    <th><p><b>Average Goals Scored </b></p></th>
+                    <td>{{avg_goals|floatformat:2}}</td>
+                    <th><p><b>Highest Goal </b></p></th>
+                    <td>{{highest_goal}}</td>
+                </tr>
+                <tr>
+                    <th><p><b>Total Assists </b></p></th>
+                    <td>{{assists}}</td>
+                    <th><p><b>Highest Assists </b></p></th>
+                    <td>{{highest_assists}}</td>
+                    
+                </tr>
+                <tr>
+                    <th><p><b>Total Yellow Cards </b></p></th>
+                    <td>{{yellow_card}}</td>
+                    <th><p><b>Total Red Cards </b></p></th>
+                    <td>{{red_card}}</td>
+                </tr>
+            </table>
+        </h6>
+    </div>
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="card recent-sales overflow-auto">
+    <div class="card-body">
+        <h5 class="card-title">Performance of Each Match</h5>
+        <table class="table table-hover datatable">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Goals</th>
+            <th scope="col">Assists</th>
+            <th scope="col">Yellow Card</th>
+            <th scope="col">Red Card</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for i in data %}
+            <tr>
+            <th scope="row">#{{forloop.counter}}</a></th>
+            <td>{{i.goals_scored}}</td>
+            <td>{{i.assists}}</td>
+            <td>{{i.yellow_card}}</td>
+            <td>{{i.red_card}}</td>
+            </tr> 
+            {% endfor %}
+            
+        </tbody>
+        </table>
+
+    </div>
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="card recent-sales overflow-auto">
+    <div class="card-body">
+        <h5 class="card-title">Consistency</h5>
+        <!-- Line Chart -->
+        <div id="reportsChart"></div>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            new ApexCharts(document.querySelector("#reportsChart"), {
+            series: [{
+                name: 'Goals',
+                data: [
+                    
+                    {% for i in loop %}
+                        
+                    {{i.goals_scored}},
+                    
+                    {% endfor %}
+                    ],
+            }, {
+                name: 'Assists',
+                data: [
+                    
+                    {% for i in loop %}
+                        
+                    {{i.assists}},
+                
+                    {% endfor %}
+                
+                    ]
+            }],
+            chart: {
+                height: 350,
+                type: 'area',
+                toolbar: {
+                show: false
+                },
+            },
+            markers: {
+                size: 4
+            },
+            colors: ['#4154f1', '#2eca6a'],
+            fill: {
+                type: "gradient",
+                gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.3,
+                opacityTo: 0.4,
+                stops: [0, 90, 100]
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 3
+            }
+            }).render();
+        });
+        </script>
+        <!-- End Line Chart -->
+    </div>
+    </div>
+</div>
+
+{% endblock %}

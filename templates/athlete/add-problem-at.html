@@ -1,0 +1,84 @@
+{% extends 'athlete/athlete-index.html' %}
+
+{% block body %}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Add Problems</h5>
+            <p>Enter the details of <code><b>Problem</b></code> and press the submit button.</p>
+            <!-- Custom Styled Validation -->
+            <form class="row g-3 needs-validation" novalidate method="post">
+                {% csrf_token %}
+                <div class="col-md-6">
+                    <label for="validationCustom04" class="form-label">Player Name</label>
+                    <select name="player_name" class="form-select" id="validationCustom04" required>
+                        <option selected disabled value="">Choose an option</option>      
+                            {% for i in  filter %}
+    
+                            <option value="{{i.player_name}}">{{i.player_name}}</option>
+    
+                            {% endfor %} 
+                            {% for i in  filter2 %}
+    
+                            <option value="{{i.player_name}}">{{i.player_name}}</option>
+    
+                            {% endfor %} 
+                    </select>
+                    <div class="invalid-feedback">
+                        Please provide a valid input.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">Problem Details</label>
+                    <input type="text" name="details" class="form-control" id="validationCustom01" required placeholder="Enter Problem details">
+                    <div class="invalid-feedback">
+                        Please provide a valid input.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-6">
+                <label for="validationCustom01" class="form-label">Contact Info</label>
+                <input type="text" name="contact" class="form-control" id="validationCustom01" required placeholder="Enter contact information" pattern="[6789][0-9]{9}">
+                    <div class="invalid-feedback">
+                        Please provide a valid input.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-6">
+                <label for="validationCustom01" class="form-label">Date</label>
+                <input type="date" name="date" class="form-control" id="validationCustom01" required max="2023-05-11">
+                <div class="invalid-feedback">
+                    Please provide a  valid input.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">Expected Return</label>
+                <input type="text" name="ex_date" class="form-control" id="validationCustom03" required placeholder="Enter expected return details">
+                <div class="invalid-feedback">
+                    Please select a option.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </form><!-- End Custom Styled Validation -->
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'coordinator/coordinator-index.html' %}
+
+{% block body %}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Add Training</h5>
+            <p>Enter the details of <code><b>Training</b></code> and press the submit button.</p>
+            <!-- Custom Styled Validation -->
+            <form class="row g-3 needs-validation" novalidate method="post">
+                {% csrf_token %}
+                <div class="col-md-6">
+                    <label for="validationCustom04" class="form-label">Team name</label>
+                    <select name="team_name" class="form-select" id="validationCustom04" required>
+                        <option selected disabled value="">Choose an option</option>      
+                            {% for i in  filter %}
+
+                            <option value="{{i.team_name}}">{{i.team_name}}</option>
+
+                            {% endfor %} 
+                            {% for i in  filter2 %}
+
+                            <option value="{{i.team_name}}">{{i.team_name}}</option>
+
+                            {% endfor %}
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a option.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">Details</label>
+                    <input type="text" name="details" class="form-control" id="validationCustom01" required placeholder="Enter details">
+                    <div class="invalid-feedback">
+                        Please provide a valid input.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-6">
+                <label for="validationCustom01" class="form-label">Reporting Time</label>
+                <input type="text" name="time" class="form-control" id="validationCustom01" required pattern="[A-Z a-z 0-9 .:]{8,100}" placeholder="Enter time (HH:MM AM/PM)">
+                    <div class="invalid-feedback">
+                        Please provide a valid time.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-6">
+                <label for="validationCustom01" class="form-label">Location</label>
+                <input type="text" name="location" class="form-control" id="validationCustom01" required placeholder="Enter location">
+                <div class="invalid-feedback">
+                    Please provide a  valid contact info.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom04" class="form-label">Coordinator</label>
+                <select name="coordinator_id" class="form-select" id="validationCustom04" required>
+                    <option selected disabled value="">Choose an option</option>
+                    
+                    {% for i in  filter3 %}
+
+                    <option value="{{i.id}}">{{i.name}}</option>
+
+                    {% endfor %}
+                        
+                </select>
+                <div class="invalid-feedback">
+                    Please select a valid coordinator.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </form><!-- End Custom Styled Validation -->
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
